@@ -1,0 +1,102 @@
+firstly set right channels of A488 (green) & H33342 (blue), 
+set contrast to make the negative control as none fluorescence, 
+for liver, the minimum is 80, the maximal is 255, 
+split changes, merge channels, 
+image to stack, make monotage to merge the negative and positive.
+
+
+open("/media/l33/ESD-USB/220908cxcr2/220910neg_liver3.czi");
+selectWindow("220910neg_liver3.czi");
+//run("Channels Tool...");
+Property.set("CompositeProjection", "null");
+Stack.setDisplayMode("color");
+run("Green");
+Stack.setChannel(2);
+Property.set("CompositeProjection", "null");
+Stack.setDisplayMode("color");
+run("Blue");
+run("Close");
+//run("Brightness/Contrast...");
+setMinAndMax(80, 255);
+run("Split Channels");
+selectWindow("C1-220910neg_liver3.czi");
+run("Merge Channels...", "c2=C1-220910neg_liver3.czi c3=C2-220910neg_liver3.czi create");
+selectWindow("220910neg_liver3.czi");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220910neg_liver3_2.tif");
+run("RGB Color");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220910neg_liver3_2.tif");
+open("/media/l33/ESD-USB/220908cxcr2/220910pos1_liver.czi");
+selectWindow("220910pos1_liver.czi");
+//run("Channels Tool...");
+Property.set("CompositeProjection", "null");
+Stack.setDisplayMode("color");
+run("Green");
+Stack.setChannel(2);
+Property.set("CompositeProjection", "null");
+Stack.setDisplayMode("color");
+run("Blue");
+run("Close");
+//run("Brightness/Contrast...");
+setMinAndMax(80, 255);
+run("Split Channels");
+selectWindow("C1-220910pos1_liver.czi");
+run("Merge Channels...", "c2=C1-220910pos1_liver.czi c3=C2-220910pos1_liver.czi create");
+run("RGB Color");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220910pos1_liver_2.tif");
+selectWindow("220910neg_liver3_2.tif");
+selectWindow("220910pos1_liver_2.tif");
+run("Images to Stack", "name=[CXCR2 in liver] use");
+run("Make Montage...", "columns=2 rows=1 scale=0.25");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220912cxcr2_liver.tif");
+close();
+close();
+selectWindow("220910neg_liver3_2.tif");
+close();
+selectWindow("220910pos1_liver.czi");
+close();
+
+for the spllen, the minimal is 40, the mximal is 255,
+other processes are the same with liver.
+
+open("/media/l33/ESD-USB/220908cxcr2/220910neg_spleen.czi");
+selectWindow("220910neg_spleen.czi");
+//run("Channels Tool...");
+Property.set("CompositeProjection", "null");
+Stack.setDisplayMode("color");
+Stack.setChannel(1);
+run("Green");
+Stack.setChannel(2);
+run("Blue");
+//run("Brightness/Contrast...");
+run("Close");
+//run("Brightness/Contrast...");
+setMinAndMax(40, 255);
+//run("Brightness/Contrast...");
+run("Close");
+run("Split Channels");
+selectWindow("C1-220910neg_spleen.czi");
+run("Merge Channels...", "c2=C1-220910neg_spleen.czi c3=C2-220910neg_spleen.czi create");
+selectWindow("220910neg_spleen.czi");
+run("RGB Color");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220910neg_spleen_2.tif");
+open("/media/l33/ESD-USB/220908cxcr2/220910pos1_spleen.czi");
+selectWindow("220910pos1_spleen.czi");
+//run("Channels Tool...");
+Property.set("CompositeProjection", "null");
+Stack.setDisplayMode("color");
+run("Green");
+Stack.setChannel(2);
+run("Blue");
+//run("Brightness/Contrast...");
+//run("Brightness/Contrast...");
+setMinAndMax(40, 255);
+run("Split Channels");
+selectWindow("C1-220910pos1_spleen.czi");
+run("Merge Channels...", "c2=C1-220910pos1_spleen.czi c3=C2-220910pos1_spleen.czi create");
+run("RGB Color");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220910pos1_spleen_2.tif");
+run("Images to Stack", "name=[CXCR2 in spleen] use");
+run("Make Montage...", "columns=2 rows=1 scale=0.25");
+saveAs("Tiff", "/media/l33/ESD-USB/220908cxcr2/220912cxcr2_spleen.tif");
+close();
+
