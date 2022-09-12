@@ -1,0 +1,28 @@
+bioformats files could be opened as diffreent color mode, 
+with colorized - open with each channels in a separate plane
+with composite (multi-channel) - open as a merged composite image with colorized channels
+with default - most in grayscale, color could also be display with merge channel via distributed color for channels
+
+image information is displayed inn the title bar: channels, image size, number of pixels,
+bit depth, amount of memory used 
+
+channels tool allow single-channel or multichannels overlay display
+the channles tool is a versatile way to view individual channel, a merged image and to change color
+
+hyperstack, is a multidimensional image with multiple channels (c), optical slices (z), frames (t)
+
+use lookup table (LUT) for pseudocolor image display
+
+an RGB image could also be split into red, green and blue image components with split channels
+merge channles can be used to merge red, green and / or blue channel images or image stacks.
+
+true color images (produced by color cameras) suh as RGB images of histological stains reflect
+genuine colors
+image - color - dichromacy will change the coloring in your image to stimulate common forms of 
+color blindness.
+image - color - color deconvolution implements stain separation.
+
+indexed color ca nbe assigned to each channle via LUT
+
+timeplase images can be assigned color codes via hyperstack - temporal color-code
+
