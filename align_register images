@@ -1,0 +1,105 @@
+with SIFT (scale invariant feature transform)
+check out the z stack of a fingerprint
+notice how image shifts as we go through the stack
+
+how does this stack look like if we get a z projection of it?
+image - stacks - z project
+check max intensity
+clearly, the image had shifted during acquisition
+
+let us use an image registration to align local eatures in the image stack,
+linear stack alignment with SIFT.
+plugins - registration - linear stack alignment with SIFT
+
+the interface of SIFT allows you to input parameters for aligning the image stack,
+make sure the active image size is within the minimum and maximum image size indicated in the interface.
+
+we can keep the default numerical values in hte interface.
+the images in the stack seem to habe been displaced in the x-y direction, 
+so we can try translation as the expected transformation.
+check the output you want to generate, then click ok.
+
+a log displays the processing status.
+the time required depends on how big the image stack is.
+
+processing is hone, let us chek the aligned stack.
+
+let us get a max projection of the aligned stack, 
+image - stack - z project - max intensity
+look better after registration.
+
+#################################################################################
+another case
+let us say you have a set of images of the same object acquired at different times or 
+by different people.
+check if the images align by first converting them into a stack, 
+image - stacks - image to stack
+
+the order of images depends on the order of opening!
+
+now let us check the stack, the images are clearly not aligned.
+
+let us try a projection, even if this is not really a z-stack.
+i will use minimum intensity ince it would work better with this brightfield image.
+it looks like the images were displaced in the x-y and have slight rotational differences.
+
+let us try to align this stack with SIFT.
+
+we will keep everything the same ,but use affine for transformation,
+and let us uncheck interpolate.
+
+processing doen, and the aligned stack has been generated.
+
+let us check the minimum intensity projection.
+
+not bad, but the transformation caused the borders of the resulting image to be adjusted so that 
+the entire transformed image fits in.
+
+we can fix this by cropping the image stack.
+image - crop
+now the aligned stack looks better.
+
+####################################################
+can we use SIFT on a time series?
+we can get a projection of this stack, even if it is not a z-stack.
+max intensity.
+while the max projection image is distorted due to image shift over time.
+
+we could also get a temporal color coded xy 2d image of this time series.
+iamge - hyperstacks - temporal color code
+
+image drift is obvious.
+
+run the alignment plugin,
+plugins - registration - linear stack alignment with SIFT
+
+let us use translation for the transformation,
+of course you can always try the other transformation algorithms on your own stacks.
+
+looks good,
+now let us color code this aligned stack in time.
+iamge - hyperstacks - temporal color code
+much better.
+
+#################################################
+can we use SIFT on multi-channel stacks?
+linear stack alignment with SIFt multichannel,
+this plugin is available via PTBIOP update site.
+
+the interface is similar, expect we can choose which channel we want as the registration channel.
+the registration is done on a channel of interest, the transformation is applied to all the other channels.
+then start the registration process.
+this will take a lot longer now.
+
+it is finally done, crop the borders.
+
+
+
+
+
+
+
+
+
+
+
