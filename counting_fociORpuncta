@@ -1,0 +1,71 @@
+count the number of nuclear foci in 2-channel image
+
+split channels to get the DAPI channel to process and analyze.
+
+change the LUT to grays, this will make the features more visible during processing.
+
+make 2 copies (duplicates) of the image
+rename as 1 and 2 (or whatever name you want)
+
+now let us use the gaussian blur filter on each of the duplicate images.
+process - filters - gaussian blur
+
+on image 2, use a sigma (radius) of 2,
+notice how the image gets blurry.
+
+on image 1, aply a gaussian blur filter with a sigma of 1, 
+the image is less blurry than image 2.
+
+the difference of gaussians (DoG) algorithm involves he subtraction of one blurred version of an image from another,
+less blurred version of the original.
+
+go to process - image calculator.
+
+choose 1 as image 1 and 2 as image 2, operation: subtract,
+check create new window.
+
+the result is an image containning only the information contained within the spatial
+frequency betweeen the two blurred images.
+the result is a bit dim, so let us have by adjusting brightness / contrast.
+decrease the maximum, and the foci seem to be enhanced more now compared to the nuclei.
+
+compare with the original image.
+let us check how thresholding works on the original image.
+there are a lot of clumps after thresholding, 
+we can not count clustered areas as individual features.
+
+let us threshold the DoG image this time.
+apply the same thresholding algorithm.
+much better, 
+of course, you can always try other thresholding algorithms.
+
+now, we can go to analyze - analyze particles, 
+set the size o rcircularity range if you want to exclude certain features from the analysis.
+check show count masks, which is the label image, you can use this for morphological analysis with morphoLibJ
+note that it is not a binary mask.
+
+check the outputs you needs.
+
+the summary shows the total number of foci or puncta found, as well as other overall measurement.
+the result table shows the measurement for each particle found.
+
+remember these measurement should have been previously selected under analyze - set measurement
+make sure limit to threshold is checked.
+
+on the ROI manager, show all displays on the active image all the ROIs in the list.
+
+note that the measurement should be taken from the original images.
+clicking the measure on the ROI manager, generates measurement from the original image.
+save your measurement.
+saving the ROI list is also an option.
+
+is it possible to count foci on a certain region of the image?
+yes, we just need to set measurement to include bounding rectangle ,
+even if the ROI is not a rectangle.
+then proceed to analye particles.
+let us check the label image (count masks)
+
+the difference of gaussian algorithm is also useful for enhancing edges in noisy images 
+since it reomved high-frequency spatial detail that can include random noise.
+it may be necessary to correct background first before using DoG.
+process - subtract background 
