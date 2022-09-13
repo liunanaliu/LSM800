@@ -1,0 +1,75 @@
+comdet plugin for spot detect and object-based colocalization
+
+goal , count these nanoparticles without thresholding.
+
+this is an RGB image, let us convert it to an 8-bit image.
+duplicate the image.
+
+since the spots are darker than the backgound, invert the image.
+edit - invert 
+
+now the spots are bright,
+background looks hetergeneous, but that is ok.
+we can work with this.
+
+simple particle detection, launch the plugin combet.
+plugin - combet - detect partcles
+https://github.com/ekatrukha/ComDet/wiki/How-to-install-plugin 
+
+the detect paritcles dialog window allows you to specify particles size and 
+intensity threshold (pariticle brightness)
+
+checking preview detection allows you to see the particles detected on the active image.
+
+to have good detection, you usually need to play with parameters and see how it goes.
+proview detection simplifies this task.
+
+if you do not want to include low-intensity particles, increase intensity threshold.
+
+by default, the plugin looks only for parsticles of a specified size,
+if you check include larger particles, bigger particles will be detected as well.
+if a large particle includes 2 or more particles, check segment larger particles to split these particles further.
+
+ROIs can be displayed as ovals or rectangles.
+
+choosing all detections in the add to roi manager option will add these detected regions around particles
+to the roi manager.
+
+the summary table that will be generated can be reset each time a new detection occurs
+or appedned to the existing summary.
+
+result table
+x_(px): x coordinate of spot (centroid fitting)
+y_(px): y coordinate of spot (centroid fitting)
+xMin, yMin, xMax, yMax: coordinates of a rectangle around each spot in pixels
+NArea is the thresholded area (multi-stage process of filtering, dilation, erosion operations) of 
+each spot in pixls.
+integratedInt is the sum of all pixels inside the thresholded spot erea minus the average spot-specific 
+background intensity.
+
+results can be saves, copied, summarized, sorted and plotted.
+the summary displays the number of particles detected.
+
+the ROI manager lists the spot detected,
+ROIs will have names of ind(detection #index in result table)_ch(#channel)_sl(#slice)_fr(#frame).
+
+show these ROIs with or without labels in the original image.
+
+flatten creates an RGB snapshot of the image with embedded overlays.
+
+#########################################################
+can spot detection be applied on a specific region of interest?
+let us use one of the drawing tools to create an ROI on this image.
+
+remember that you can change how these ROIs are displayed.
+
+##########################################################
+detection and colocalization in multi-channel iamges
+for colocalization, you need a color composite image containing 2 or more channels.
+
+detection works onn the whole image or on an ROI.
+
+
+
+
+
