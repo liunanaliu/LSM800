@@ -1,0 +1,90 @@
+use the menu conmmand image - adjust - brightness / contrast on an active image
+minimum and maximum sliders control the lower and upper limits of hte display range
+
+reset restores the original brightness / contrast settings.
+
+auto automatically optimizes brightness and contrast based on an analysis of the image's histogram.
+
+each additional click on auto increase the number of saturated pixels and thus the amount of optimization.
+
+click on set to enter minimum and maximum display range values in a dialog box.
+check propagate to all other open images to apply these values to all images currently open.
+
+click on apply alters the pixel data of a non-RGB image
+Do Not click apply if image quantation is intended on an active image.
+
+you can create an RGB image with adjusted brightness / contrast settings by using the menu command
+plugins - utilities - capture image
+save the new RGB images as a tiff, jpeg, bmp or png
+
+for multichannle composite images, image - adjust - brightness / contrast can be used to adjust channles 
+separately when the channel bar is moved to the appropriate channel.
+
+a multichannel compsite image is considered a stack
+
+to copy the active image, go to image - duplicate, you can rename the new image
+
+a composite image can be converted to a multichannel RGB image by the command image - color - stack to RGB
+using the brightness / contrast adjustment on an RGB color image updates brightness display 
+for all channles as a group.
+
+use image - adjust - color balance to set brightness and contrast display for individual channles
+in an RGB image, use the selection to specify which color will be adjusted.
+
+use plugins - utilities - capture images to create an optimized RGB image display that can be saved for presentation.
+to convert an RGB multichannel image to a composite image, go to image - color - make composite.
+
+sometimes an iamge contains a wide range of intensities and it is difficult to find a display range that shows the dimmest 
+objects while not saturating the brightest.
+this is where non-linear adjustments may be helpful.
+
+the menu command process - enhance contrast increase image contrast by using 
+either histogram stretching or histogram equalization.
+saturated pixels determines the number of pixels in the image that are allowed to become saturated, 
+increasing this value increases contrasts.
+
+pixel values are altered when either normalize or equalize histogram is enabled.
+
+edit - undo reverses the effect of the most recent image editting operation.
+
+process - math - gamma changes how intensities are scaled between the two limits (min and max)
+gamma equals 1 is normal, 
+more than 1 is medium-intensity objects can be made fainter without dimming the bright objects
+less than 1 is faint objects can be made intense without saturating bright objects.
+
+remember to save alteredd image as a new file and do not overwrite the original file.
+
+brightness / contrast setting can also be applied to multidimensional images (z stacks)
+
+for the enhancement contrast options, with stacks, process all slides is displayed, if this option
+is enabled, normalization and histogram equalization are applied to all slides in the stack.
+
+if stack histogram is checked, the overall stack histograms (instead of individual slides histograms that allow 
+optimal adjustments for each slides alone) is taken into account.
+this option may be especially relevent when performing enhancements based on a particular region of interest.
+
+for gamma adjustments on a stack, use the scrollbar to determine the desired gamma value on one slide of the stack, 
+and then apply this gama value to the stack.
+Note that thewe is no undo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
