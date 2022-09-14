@@ -1,0 +1,22 @@
+filter can be used for :
++ noise-reduction;
++ artefact-removal;
++ contrast enhancement;
++ correct uneven illumination.
+
+filter changes pixel values.
+
+linear filter, we convolove an iamge with a kernel.
+convolution operator,
+examples : 
++ mean 
++ gaussian blur
++ sobel-operator
+
+non-linear filter, also replace pixel value inside as rolling window 
+but in a non linear function,
+example : 
++ min, max,
++ median, variance,
++ standard deviation.
+
